@@ -2,6 +2,7 @@
 ArazCloud has given me 3 tasks after I was passed the first interview. These tasks are mostly about NGINX configuration, SSL and Docker Stack.
 ## Task 1 - Wordpress with Postgresql and NGINX
 In this task, we have a Wordpress installed and working with NGINX and PostgreSQL.
+**This task is directly installed on the host and there is no docker containers involved.**
 ### How Wordpress and Posgtresql are installed
 Wordpress and PostgreSQL are working together with the help of a fork of [PG4WP](https://github.com/kevinoid/postgresql-for-wordpress).
 After downloading and extracting Wordpress and PG4WP in `/var/ww/html/wordpress` directory, we will copy `pg4wp` directory to `.../wordpress/wp-content/`, and also `pg4wp/db.php` to `.../wordpress/wp-content/`.

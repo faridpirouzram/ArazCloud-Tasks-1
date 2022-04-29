@@ -10,6 +10,7 @@ services:
       - "task3-network"
     volumes:
       - "/usr/share/nginx/html/:/usr/share/nginx/html/"
+      
 networks:
   task3-network:
     external: true

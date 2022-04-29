@@ -9,6 +9,6 @@ services:
     networks:
       - "task3-network"
     volumes:
-      - "./data/:/usr/share/nginx/html/"
+      - "/usr/share/nginx/html/:/usr/share/nginx/html/"
 networks:
   task3-network:

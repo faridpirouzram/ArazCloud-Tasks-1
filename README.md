@@ -1,5 +1,7 @@
 # ArazCloud-Tasks
+ArazCloud has given me 3 tasks after I was passed the first interview. These tasks are mostly about NGINX configuration, SSL and Docker Stack.
 ## Task 1 - Wordpress with Postgresql and NGINX
+In this task, we have a Wordpress installed and working with NGINX and PostgreSQL.
 ### How Wordpress and Posgtresql are installed
 Wordpress and PostgreSQL are working together with the help of a fork of [PG4WP](https://github.com/kevinoid/postgresql-for-wordpress).
 After downloading and extracting Wordpress and PG4WP in `/var/ww/html/wordpress` directory, we will copy `pg4wp` directory to `.../wordpress/wp-content/`, and also `pg4wp/db.php` to `.../wordpress/wp-content/`.
@@ -49,6 +51,7 @@ NGINX load balancer redirects HTTP traffic to HTTPS.
 
 
 ## Task 3 - Background changer
+In this task, the goal is to change background of my web server with only the `ansible-playbook setup.yml` command.
 ### How the playbook works
 We have an ansible playbook with the ability to change background of our web server by changing the value of color in `index.html` file.
 This playbook starts by searching for the color value using `sed` shell command, and stores the stdout in an ansible fact. After that, there are two ansible tasks, first one is changing background to green when it is blue, and the last task changes background to blue when it is green.

@@ -1,9 +1,5 @@
 version: "3.5"
 
-networks:
-  task2-network:
-    external: true
-
 services:
 
   nginx_balancer:
@@ -65,3 +61,6 @@ services:
       - '-nginx.scrape-uri=http://nginx_container_2:8080/nginx_status'
     networks:
       - task2-network
+networks:
+  task2-network:
+    external: true

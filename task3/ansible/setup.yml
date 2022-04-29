@@ -1,0 +1,22 @@
+---
+
+- hosts: all
+  tasks:
+
+    - name: search for the background color
+      shell: sed -n 's/^<body.*color:\(.*\);">$/\1/p' /home/saber/tasks/task3/data/index.html
+      register: color
+
+    - name: change background
+      lineinfile:
+        path: /home/saber/tasks/task3/data/index.html
+        regexp: '^<body style='
+        line: '<body style="background-color:lime;">'
+      when: color.stdout == 'aqua'
+
+    - name: change background
+      lineinfile:
+        path: /home/saber/tasks/task3/data/index.html
+        regexp: '^<body style='
+        line: '<body style="background-color:aqua;">'
+      when: color.stdout == 'lime'

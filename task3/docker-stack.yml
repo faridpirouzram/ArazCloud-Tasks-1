@@ -1,0 +1,14 @@
+version: "3"
+services:
+
+  nginx:
+    image: nginx-certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - "task3-network"
+    volumes:
+      - "./data/:/usr/share/nginx/html/"
+networks:
+  task3-network:

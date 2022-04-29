@@ -1,0 +1,77 @@
+version: "3.5"
+
+networks:
+  task2-network:
+
+services:
+
+  nginx_balancer:
+    image: nginx-certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - task2-network
+    volumes:
+      - "./nginx-load-balancer/:/etc/nginx/conf.d/"
+
+  nginx_container_1:
+    image: nginx
+    networks:
+      - task2-network
+
+    volumes:
+      - "./nginx_containers/c1/:/etc/nginx/conf.d/"
+
+  nginx_container_2:
+    image: nginx
+    networks:
+      - task2-network
+    volumes:
+      - "./nginx_containers/c2/:/etc/nginx/conf.d/"
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - "./prometheus/:/etc/prometheus/"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - "9090:9090"
+    networks:
+      - task2-network
+    depends_on:
+      - exporter_nginx_balancer
+      - exporter_nginx_container1
+      - exporter_nginx_container2
+
+  exporter_nginx_balancer:
+    image: nginx/nginx-prometheus-exporter:0.10.0
+    networks:
+      - task2-network
+    command:
+    - '-nginx.scrape-uri=http://nginx_balancer:8080/nginx_status'
+    depends_on:
+      - nginx_balancer
+
+  exporter_nginx_container_1:
+    image: nginx/nginx-prometheus-exporter:0.10.0
+    command:
+      - '-nginx.scrape-uri=http://nginx_container_1:8080/nginx_status'
+    networks:
+      - task2-network
+    depends_on:
+      - nginx_container_1
+
+  exporter_nginx_container_2:
+    image: nginx/nginx-prometheus-exporter:0.10.0
+    command:
+      - '-nginx.scrape-uri=http://nginx_container_2:8080/nginx_status'
+    networks:
+      - task2-network
+    depends_on:
+      - nginx_container_2

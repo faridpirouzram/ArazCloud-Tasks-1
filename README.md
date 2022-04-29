@@ -60,3 +60,5 @@ We have an ansible playbook with the ability to change background of our web ser
 This playbook starts by searching for the color value using `sed` shell command, and stores the stdout in an ansible fact. After that, there are two ansible tasks, first one is changing background to green when it is blue, and the last task changes background to blue when it is green.
 ### Docker-stack.yml
 We have a `docker-stack.yml` file that runs a webserver container and mounting `./data/` directory as a volume. Inside `./data/` directory is the `index.html` file that our playbook changes its color value.
+
+<p align="right">(<a href="#top">back to top</a>)</p>

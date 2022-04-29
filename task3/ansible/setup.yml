@@ -4,19 +4,19 @@
   tasks:
 
     - name: search for the background color
-      shell: sed -n 's/^<body.*color:\(.*\);">$/\1/p' /usr/share/nginx/index.html
+      shell: sed -n 's/^<body.*color:\(.*\);">$/\1/p' /usr/share/nginx/html/index.html
       register: color
 
     - name: change background to green
       lineinfile:
-        path: /usr/share/nginx/index.html
+        path: /usr/share/nginx/html/index.html
         regexp: '^<body style='
         line: '<body style="background-color:lime;">'
       when: color.stdout == 'aqua'
 
     - name: change background blue
       lineinfile:
-        path: /usr/share/nginx/index.html
+        path: /usr/share/nginx/html/index.html
         regexp: '^<body style='
         line: '<body style="background-color:aqua;">'
       when: color.stdout == 'lime'

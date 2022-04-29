@@ -10,7 +10,7 @@ Then we need to install **php** and **php-fpm** and add php configuration to NGI
 ### NGINX configuration
 We want NGINX to interact with our wordpress, so we configure it to work with php files with help of **php-fpm**. NGINX is also configured to redirect HTTP to HTTPS and has SSL certificate.
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Task 2 - NGINX Load Balancer
 For this task, we have 7 containers and 1 grafana server working together.
@@ -51,7 +51,7 @@ Grafana, installed on the host and listening on port **3000**, accepts data from
 SSL certificate is created with the help of [Let's Encrypt](https://letsencrypt.org/) and [Certbot](https://github.com/certbot/certbot).
 NGINX load balancer redirects HTTP traffic to HTTPS.
 
-
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Task 3 - Background changer
 In this task, the goal is to change background of my web server with only the `ansible-playbook setup.yml` command.

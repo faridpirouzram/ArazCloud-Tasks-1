@@ -9,6 +9,9 @@ After that, we'll create a database, a user with a password in `psql` command. A
 Then we need to install **php** and **php-fpm** and add php configuration to NGINX config file.
 ### NGINX configuration
 We want NGINX to interact with our wordpress, so we configure it to work with php files with help of **php-fpm**. NGINX is also configured to redirect HTTP to HTTPS and has SSL certificate.
+
+
+
 ## Task 2 - NGINX Load Balancer
 For this task, we have 7 containers and 1 grafana server working together.
 The containers are:

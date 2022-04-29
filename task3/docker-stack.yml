@@ -12,5 +12,4 @@ services:
       - "/usr/share/nginx/html/:/usr/share/nginx/html/"
 networks:
   task3-network:
-    external:
-      name: task3-network
+    external: true
